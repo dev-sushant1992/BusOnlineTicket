@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts SYSTEM "struts-2.0.dtd" >
+<struts>
+
+	
+	<package name="login-package" extends="struts-default">
+	
+		<!-- User Session -->
+		<action name="userLoginAction" class="actions.UserLoginAction">
+			<result name="success">Home.jsp</result>
+			<result name="error">UserLogin.jsp</result>
+		</action>
+		
+		<action name="userLogoutAction" class="actions.UserLogoutAction">
+			<result name="success">Home.jsp</result>
+			<result name="error">Home.jsp</result>
+		</action>
+		
+		<action name="userRegisterAction" class="actions.UserRegisterAction">
+			<result name="success">header.jsp</result>
+			<result name="input">UserSignUp.jsp</result>
+			<result name="error">UserSignUp.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- Admin Session -->
+		<action name="adminLoginAction" class="actions.AdminLoginAction">
+			<result name="success">AdminPanel.jsp</result>
+			<result name="error">AdminLogin.jsp</result>
+			<result name="input">AdminLogin.jsp</result>
+		</action>
+		
+		<action name="adminLogoutAction" class="actions.AdminLogoutAction">
+			<result name="success">Home.jsp</result>
+			<result name="error">AdminPanel.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- Booking "Start-End" -->
+		<action name="bookingHomeAction" class="actions.BookingHomeAction">
+			<result name="success">Booking.jsp</result>
+		</action>
+		
+		<action name="getBusListAction" class="actions.FindBusesAction">
+			<result name="success">BusDetails.jsp</result>
+			<result name ="error">NoBusesFound.jsp</result>
+		</action>
+		
+		<action name="confirmTicketAction" class="actions.TicketAddAction">
+			<result name="success" type="chain">ticketDisplayAction</result>
+			<result name="error">TicketNotBooked.jsp</result>
+			<result name = "login">UserLogin.jsp</result>
+		</action>
+		
+		<action name="ticketDisplayAction" class="actions.TicketDisplayAction">
+			<result name="success">ConfirmTicket.jsp</result>
+			<result name="error">TicketBookedButError.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- Booked Tickets -->
+		<action name="ticketHistoryAction" class="actions.TicketHistoryAction">
+			<result name="success">BookedTickets.jsp</result>
+			<result name="login">UserLogin.jsp</result>
+			<result name="error">Home.jsp</result>
+		</action>
+		
+		<action name="BookedTicketSubmitAction" class = "actions.BookedTicketSubmitAction">
+			<result name="cancel" type="chain">cancelTicketAction</result>
+			<result name="details" type="chain">ticketDisplayAction</result>
+		</action>
+		
+		<action name="cancelTicketAction" class="actions.CancelTicketAction">
+			<result name="success">BookedTickets.jsp</result>
+			<result name="login">UserLogin.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- Admin Panel -->
+		<action name="addBusAction" class="actions.BusAddAction">
+			<result name="success">AdminPanel.jsp</result>
+			<result name="error">AdminPanel.jsp</result>
+			<result name="login">AdminLogin.jsp</result>
+			<result name="input">BusAdd.jsp</result>
+		</action>
+		
+		<action name="updateBusGetIdAction" class="actions.UpdateBusGetIdAction">
+			<result name="input">BusUpdateGetId.jsp</result>
+			<result name="success" >BusUpdate.jsp</result>
+			<result name="login" >AdminLogin.jsp</result>
+		</action>
+		
+		<action name="updateBusAction" class="actions.UpdateBusAction">
+			<result name="success">AdminPanel.jsp</result>
+			<result name="input">BusUpdate.jsp</result>
+			<result name="login">AdminLogin.jsp</result>
+		</action>
+		
+		<action name="removeBusAction" class="actions.RemoveBusAction">
+			<result name="success">AdminPanel.jsp</result>
+			<result name="input">BusRemove.jsp</result>
+			<result name="login">AdminLogin.jsp</result>
+		</action>
+	</package>
+</struts>

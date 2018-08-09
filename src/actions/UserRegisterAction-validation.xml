@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0//EN" 
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="firstName">
+		<field-validator type="requiredstring">
+			<message>*Required</message>
+		</field-validator>
+	</field>
+	
+	<field name="lastName">
+		<field-validator type="requiredstring">
+			<message>*Required</message>
+		</field-validator>
+	</field>
+	
+	<field name="username">
+		<field-validator type="requiredstring">
+			<message>*Required</message>
+		</field-validator>
+	</field>
+
+	<field name="password">
+		<field-validator type="requiredstring">
+			<message>*</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">4</param>
+			<param name="trim">true</param>
+			<message>Enter password 4-10 characters long.</message>
+		</field-validator>
+		<field-validator type="passwordintegrity">
+			<param name="specialCharacters">$!@#?</param>
+			<message>Your password must contain one of the following ${specialCharacters}
+				</message>
+		</field-validator>
+	</field>
+
+	<field name="confirmPassword">
+		<field-validator type="fieldexpression">
+			<param name="expression">(confirmPassword == password)</param>
+			<message>Password and Re-Enter Password must be same.</message>
+		</field-validator>
+	</field>
+
+    <field name="age">
+		<field-validator type="int">
+			<param name="min">5</param>
+			<param name="max">80</param>
+			<message>Enter age between 5 and 80.</message>
+		</field-validator>
+	</field>
+	
+	<field name="mobileNo">
+		<field-validator type="requiredstring">
+		
+		<message>*Required</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="expression">
+				<![CDATA[([+][9][1][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])]]>
+			</param>
+			<message>Valid Mobile No required e.g. +919845827360</message>
+		</field-validator>
+	</field>
+	
+	<field name="emailId">
+		<field-validator type="requiredstring">
+			<message>*</message>
+		</field-validator>
+		<field-validator type="email">
+			<message>Enter a valid E-Mail Id.</message>
+		</field-validator>
+	</field>
+</validators>
+

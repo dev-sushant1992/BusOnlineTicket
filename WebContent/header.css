@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+
+a
+{
+	color:#fef3aa;
+}
+
+a:ACTIVE
+{
+	color:blue;
+}
+
+@-webkit-keyframes logo
+{
+	0%	{left : 0%}
+	50%	{left : 50%}
+	100%{left :100%}
+}
+
+.logo
+{
+	position : fixed;
+	-webkit-animation-name : logo;
+	-webkit-animation-duration : 4s;
+}
